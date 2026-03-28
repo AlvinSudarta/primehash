@@ -1,6 +1,6 @@
 {
-  "name": "primehash",
-  "version": "1.0.0",
+  "name": "@alvin_sudarta/primehash",
+  "version": "1.0.1",
   "description": "An original password hashing scheme integrating a Keccak-based sponge construction with an adaptive prime-number-based salting mechanism.",
   "main": "primehash.js",
   "browser": "primehash.min.js",
@@ -26,7 +26,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AlvinSudarta/primehash.git"
+    "url": "git+https://github.com/AlvinSudarta/primehash.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlvinSudarta/primehash/issues"
   },
   "homepage": "https://github.com/AlvinSudarta/primehash#readme"
 }
