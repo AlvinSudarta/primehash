@@ -64,8 +64,5 @@ if (result.valid) {
 - `valid` *(boolean)*: `true` if the password matches the hash.
 - `updateHash` *(string)*: A freshly generated hash. It is highly recommended to replace the stored hash with this new value on every successful login to mitigate credential-stuffing attacks.
 
-## License
-MIT License.
-
 ---
 *Developed by Alvin Sudarta - Universitas Bunda Mulia (2026)*
