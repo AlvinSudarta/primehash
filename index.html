@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrimeHash – Password Hashing Library</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="primehash.min.js"></script>
+</head>
+<body class="bg-base-100 text-base-content min-h-screen">
+
+<!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+<div class="navbar bg-base-200 border-b border-base-300 sticky top-0 z-50">
+  <div class="navbar-start">
+    <div class="flex items-center gap-2 px-2">
+      <!-- Shield icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      </svg>
+      <span class="font-bold text-lg">PrimeHash</span>
+    </div>
+  </div>
+  <div class="navbar-end hidden sm:flex gap-2 pr-4">
+    <a href="#quickstart" class="btn btn-ghost btn-sm">Quick Start</a>
+    <a href="#api" class="btn btn-ghost btn-sm">API</a>
+    <a href="#playground" class="btn btn-primary btn-sm">Playground</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════ HERO ══════════════════════════ -->
+<div class="hero min-h-[55vh] bg-gradient-to-br from-base-100 via-base-200 to-base-100">
+  <div class="hero-content text-center flex-col py-16 px-4">
+    <div class="badge badge-outline badge-primary mb-4 py-3 px-4 text-xs font-semibold tracking-widest uppercase">
+      Password Hashing Library
+    </div>
+    <h1 class="text-5xl sm:text-6xl font-extrabold mb-4">PrimeHash</h1>
+    <p class="text-base-content/60 text-lg max-w-xl mb-8">
+      An original password hashing scheme integrating a
+      <span class="text-primary font-semibold">Sponge Structure</span>
+      with an adaptive
+      <span class="text-secondary font-semibold">Built-In Salting</span>
+      mechanism. No server required — runs entirely in the browser or Node.js.
+    </p>
+    <div class="flex flex-wrap justify-center gap-2">
+      <div class="badge badge-ghost gap-1 py-3 px-3">
+        <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+        Sponge Structure
+      </div>
+      <div class="badge badge-ghost gap-1 py-3 px-3">
+        <span class="w-2 h-2 rounded-full bg-success inline-block"></span>
+        Built-In Salting
+      </div>
+      <div class="badge badge-ghost gap-1 py-3 px-3">
+        <span class="w-2 h-2 rounded-full bg-warning inline-block"></span>
+        ISO/IEC 10118-1:2016
+      </div>
+      <div class="badge badge-ghost gap-1 py-3 px-3">
+        <span class="w-2 h-2 rounded-full bg-info inline-block"></span>
+        Zero Dependencies
+      </div>
+      <div class="badge badge-ghost gap-1 py-3 px-3">
+        <span class="w-2 h-2 rounded-full bg-secondary inline-block"></span>
+        Browser &amp; Node.js
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ QUICK START ══════════════════════════ -->
+<section id="quickstart" class="py-16 border-t border-base-300">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <div class="flex items-center gap-3 mb-2">
+      <!-- Bolt icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-warning" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+      </svg>
+      <h2 class="text-2xl font-bold">Quick Start</h2>
+    </div>
+    <p class="text-base-content/50 mb-8">Get PrimeHash running in under a minute. Choose your preferred delivery method.</p>
+
+    <!-- CDN Selector Tabs -->
+    <div role="tablist" class="tabs tabs-lifted tabs-lg w-full">
+
+      <!-- jsDelivr -->
+      <input type="radio" name="cdn_tabs" role="tab" class="tab font-semibold" aria-label="jsDelivr" checked />
+      <div role="tabpanel" class="tab-content bg-base-200 border-base-300 rounded-box p-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+              Include via jsDelivr
+            </h3>
+            <div class="mockup-code text-sm">
+              <pre data-prefix="&lt;" class="text-warning"><code>script src="https://cdn.jsdelivr.net/npm/primehash@latest/dist/primehash.min.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
+              Usage
+            </h3>
+            <div class="mockup-code text-sm">
+              <pre data-prefix="1"><code><span class="text-red-400">const</span> hash = PrimeHash.<span class="text-purple-400">hash</span>(<span class="text-green-400">"mypassword"</span>, <span class="text-cyan-400">24</span>, <span class="text-cyan-400">32</span>);</code></pre>
+              <pre data-prefix="2"><code><span class="text-red-400">const</span> res  = PrimeHash.<span class="text-purple-400">verify</span>(<span class="text-green-400">"mypassword"</span>, <span class="text-cyan-400">24</span>, hash);</code></pre>
+              <pre data-prefix="3"><code>console.<span class="text-purple-400">log</span>(res.valid); <span class="text-base-content/40">// true</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- unpkg -->
+      <input type="radio" name="cdn_tabs" role="tab" class="tab font-semibold" aria-label="unpkg" />
+      <div role="tabpanel" class="tab-content bg-base-200 border-base-300 rounded-box p-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+              Include via unpkg
+            </h3>
+            <div class="mockup-code text-sm">
+              <pre data-prefix="&lt;" class="text-warning"><code>script src="https://unpkg.com/primehash@latest/dist/primehash.min.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
+              Usage
+            </h3>
+            <div class="mockup-code text-sm">
+              <pre data-prefix="1"><code><span class="text-red-400">const</span> hash = PrimeHash.<span class="text-purple-400">hash</span>(<span class="text-green-400">"mypassword"</span>, <span class="text-cyan-400">24</span>, <span class="text-cyan-400">32</span>);</code></pre>
+              <pre data-prefix="2"><code><span class="text-red-400">const</span> res  = PrimeHash.<span class="text-purple-400">verify</span>(<span class="text-green-400">"mypassword"</span>, <span class="text-cyan-400">24</span>, hash);</code></pre>
+              <pre data-prefix="3"><code>console.<span class="text-purple-400">log</span>(res.valid); <span class="text-base-content/40">// true</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- npm -->
+      <input type="radio" name="cdn_tabs" role="tab" class="tab font-semibold" aria-label="npm" />
+      <div role="tabpanel" class="tab-content bg-base-200 border-base-300 rounded-box p-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5M12 19.5V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z" /></svg>
+              Install via npm
+            </h3>
+            <div class="mockup-code text-sm">
+              <pre data-prefix="$"><code>npm install primehash</code></pre>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
+              CommonJS / ESM
+            </h3>
+            <div class="mockup-code text-sm">
+              <pre data-prefix="1"><code><span class="text-red-400">const</span> PrimeHash = <span class="text-purple-400">require</span>(<span class="text-green-400">'primehash'</span>);</code></pre>
+              <pre data-prefix="2"><code></code></pre>
+              <pre data-prefix="3"><code><span class="text-red-400">const</span> hash = PrimeHash.<span class="text-purple-400">hash</span>(<span class="text-green-400">"mypassword"</span>, <span class="text-cyan-400">24</span>, <span class="text-cyan-400">32</span>);</code></pre>
+              <pre data-prefix="4"><code><span class="text-red-400">const</span> res  = PrimeHash.<span class="text-purple-400">verify</span>(<span class="text-green-400">"mypassword"</span>, <span class="text-cyan-400">24</span>, hash);</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Local File -->
+      <input type="radio" name="cdn_tabs" role="tab" class="tab font-semibold" aria-label="Local" />
+      <div role="tabpanel" class="tab-content bg-base-200 border-base-300 rounded-box p-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+              Download &amp; Self-host
+            </h3>
+            <div class="mockup-code text-sm">
+              <pre data-prefix="&lt;" class="text-warning"><code>script src="primehash.min.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            <p class="text-base-content/50 text-xs mt-3">Download <code class="bg-base-300 px-1 rounded">primehash.min.js</code> and serve alongside your HTML. No build step required.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
+              Usage
+            </h3>
+            <div class="mockup-code text-sm">
+              <pre data-prefix="1"><code><span class="text-red-400">const</span> hash = PrimeHash.<span class="text-purple-400">hash</span>(<span class="text-green-400">"mypassword"</span>, <span class="text-cyan-400">24</span>, <span class="text-cyan-400">32</span>);</code></pre>
+              <pre data-prefix="2"><code><span class="text-red-400">const</span> res  = PrimeHash.<span class="text-purple-400">verify</span>(<span class="text-green-400">"mypassword"</span>, <span class="text-cyan-400">24</span>, hash);</code></pre>
+              <pre data-prefix="3"><code>console.<span class="text-purple-400">log</span>(res.valid);      <span class="text-base-content/40">// true</span></code></pre>
+              <pre data-prefix="4"><code>console.<span class="text-purple-400">log</span>(res.updateHash); <span class="text-base-content/40">// fresh hash</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tabs -->
+  </div>
+</section>
+
+<!-- ══════════════════════════ API REFERENCE ══════════════════════════ -->
+<section id="api" class="py-16 border-t border-base-300">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <div class="flex items-center gap-3 mb-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-info" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+      </svg>
+      <h2 class="text-2xl font-bold">API Reference</h2>
+    </div>
+    <p class="text-base-content/50 mb-8">Two functions. That's it.</p>
+
+    <!-- hash() -->
+    <div class="card bg-base-200 border border-base-300 mb-6">
+      <div class="card-body">
+        <div class="mockup-code text-sm mb-4">
+          <pre><code>PrimeHash.<span class="text-primary">hash</span>( password, round, length ) → <span class="text-base-content/50">string</span></code></pre>
+        </div>
+        <p class="text-base-content/60 text-sm mb-4">
+          Hashes a password and returns a hex string. Each call produces a different result — a random 64-bit salt is
+          <span class="text-success font-semibold">embedded inside the hash output</span>. No separate salt column in your database needed.
+        </p>
+        <div class="overflow-x-auto">
+          <table class="table">
+            <thead>
+              <tr><th>Parameter</th><th>Type</th><th>Range</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>password</code></td><td><span class="badge badge-ghost badge-sm">string</span></td><td>non-empty</td><td>Plaintext password to hash.</td></tr>
+              <tr><td><code>round</code></td><td><span class="badge badge-ghost badge-sm">number</span></td><td>1 – 24</td><td>Sponge permutation rounds. Higher = slower &amp; stronger. Recommended: <strong>24</strong>.</td></tr>
+              <tr><td><code>length</code></td><td><span class="badge badge-ghost badge-sm">number</span></td><td>24 – 99</td><td>Output in bytes. Hex string = <code>length × 2</code> chars. Recommended: <strong>32</strong>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- verify() -->
+    <div class="card bg-base-200 border border-base-300">
+      <div class="card-body">
+        <div class="mockup-code text-sm mb-4">
+          <pre><code>PrimeHash.<span class="text-success">verify</span>( password, round, hashedPassword ) → <span class="text-base-content/50">&#123; valid, updateHash &#125;</span></code></pre>
+        </div>
+        <p class="text-base-content/60 text-sm mb-4">
+          Verifies a password against a stored hash. When valid, returns a fresh <code>updateHash</code> for
+          <span class="text-warning font-semibold">hash rotation</span> — replacing the stored hash on each login mitigates credential-stuffing attacks.
+        </p>
+        <div class="overflow-x-auto">
+          <table class="table">
+            <thead>
+              <tr><th>Param / Return</th><th>Type</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>password</code></td><td><span class="badge badge-ghost badge-sm">string</span></td><td>Plaintext password to verify.</td></tr>
+              <tr><td><code>round</code></td><td><span class="badge badge-ghost badge-sm">number</span></td><td>Must match the round used during hashing.</td></tr>
+              <tr><td><code>hashedPassword</code></td><td><span class="badge badge-ghost badge-sm">string</span></td><td>Stored hex hash to verify against.</td></tr>
+              <tr><td><span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-base-content/40 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" /></svg><code>valid</code></span></td><td><span class="badge badge-success badge-sm">boolean</span></td><td><code>true</code> if the password matches.</td></tr>
+              <tr><td><span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-base-content/40 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" /></svg><code>updateHash</code></span></td><td><span class="badge badge-info badge-sm">string|null</span></td><td>Fresh hash for rotation. <code>null</code> when invalid.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ PLAYGROUND ══════════════════════════ -->
+<section id="playground" class="py-16 border-t border-base-300">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <div class="flex items-center gap-3 mb-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+      </svg>
+      <h2 class="text-2xl font-bold">Playground</h2>
+    </div>
+    <p class="text-base-content/50 mb-8">Try the algorithm live. Hash output auto-fills the Verify section.</p>
+
+    <div class="grid md:grid-cols-2 gap-6 items-start">
+
+      <!-- Hash Panel -->
+      <div class="card bg-base-200 border border-base-300">
+        <div class="card-body gap-4">
+          <h3 class="card-title text-base flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+            Hash a Password
+          </h3>
+
+          <div class="form-control">
+            <label class="label"><span class="label-text">Password</span></label>
+            <input id="h-password" type="text" placeholder="Enter your password…"
+              class="input input-bordered input-sm w-full" oninput="updateHashCode()" />
+          </div>
+
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Round (1–24)</span>
+              <span class="label-text-alt text-primary font-bold" id="h-round-val">24</span>
+            </label>
+            <input id="h-round" type="range" min="1" max="24" value="24" class="range range-primary range-sm"
+              oninput="document.getElementById('h-round-val').textContent=this.value;updateHashCode()" />
+          </div>
+
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Output Length in bytes (24–99)</span>
+              <span class="label-text-alt text-primary font-bold" id="h-length-val">32</span>
+            </label>
+            <input id="h-length" type="range" min="24" max="99" value="32" class="range range-primary range-sm"
+              oninput="document.getElementById('h-length-val').textContent=this.value;updateHashCode()" />
+          </div>
+
+          <!-- Live code preview -->
+          <div class="mockup-code text-xs">
+            <pre><code id="hash-code-preview" class="text-info">PrimeHash.hash("", 24, 32)</code></pre>
+          </div>
+
+          <button id="hash-btn" class="btn btn-primary w-full" onclick="doHash()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            <span id="hash-btn-label">Hash Password</span>
+          </button>
+
+          <div id="hash-result" class="hidden">
+            <div class="divider my-1"></div>
+            <div id="hash-result-inner" class="font-mono text-xs break-all leading-relaxed"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verify Panel -->
+      <div class="card bg-base-200 border border-base-300">
+        <div class="card-body gap-4">
+          <h3 class="card-title text-base flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Verify a Password
+          </h3>
+
+          <div class="form-control">
+            <label class="label"><span class="label-text">Password</span></label>
+            <input id="v-password" type="text" placeholder="Enter password to verify…"
+              class="input input-bordered input-sm w-full" oninput="updateVerifyCode()" />
+          </div>
+
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Round (1–24)</span>
+              <span class="label-text-alt text-success font-bold" id="v-round-val">24</span>
+            </label>
+            <input id="v-round" type="range" min="1" max="24" value="24" class="range range-success range-sm"
+              oninput="document.getElementById('v-round-val').textContent=this.value;updateVerifyCode()" />
+          </div>
+
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Hashed Password (hex)</span>
+              <span class="label-text-alt text-success text-xs italic inline-flex items-center gap-1" id="autofill-note" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" /></svg>auto-filled</span>
+            </label>
+            <input id="v-hash" type="text" placeholder="Paste hash or use auto-fill from left…"
+              class="input input-bordered input-sm w-full font-mono text-xs" oninput="updateVerifyCode()" />
+          </div>
+
+          <!-- Live code preview -->
+          <div class="mockup-code text-xs">
+            <pre><code id="verify-code-preview" class="text-info whitespace-pre-wrap">PrimeHash.verify("", 24, "…")</code></pre>
+          </div>
+
+          <button id="verify-btn" class="btn btn-success w-full" onclick="doVerify()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span id="verify-btn-label">Verify Password</span>
+          </button>
+
+          <div id="verify-result" class="hidden">
+            <div class="divider my-1"></div>
+            <div id="verify-result-inner" class="font-mono text-xs break-all leading-relaxed"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ DONATION ══════════════════════════ -->
+<section id="donate" class="py-16 border-t border-base-300">
+  <div class="container mx-auto px-4 max-w-3xl text-center">
+    <div class="flex items-center justify-center gap-3 mb-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-error" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+      </svg>
+      <h2 class="text-2xl font-bold">Support the Research</h2>
+    </div>
+    <p class="text-base-content/60 mb-8 max-w-xl mx-auto">
+      PrimeHash is the result of <span class="text-warning font-semibold">2 years of research</span> as my final thesis at Universitas Bunda Mulia.
+      If this library has helped you, consider buying me a meal — it means a lot to a fresh graduate.
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block align-text-bottom text-warning" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </p>
+
+    <div class="card bg-base-200 border border-base-300 max-w-sm mx-auto">
+      <div class="card-body items-center text-center gap-4">
+        <!-- BCA Logo placeholder -->
+        <div class="avatar placeholder">
+          <div class="bg-blue-600 text-white rounded-full w-16 text-lg font-extrabold">
+            BCA
+          </div>
+        </div>
+        <div>
+          <p class="text-base-content/50 text-sm font-semibold uppercase tracking-widest mb-1">Bank Central Asia</p>
+          <p class="text-3xl font-mono font-bold tracking-widest text-primary select-all">4770234293</p>
+          <p class="text-base-content/50 text-sm mt-1">a.n. Alvin Sudarta</p>
+        </div>
+        <button class="btn btn-outline btn-sm gap-2" onclick="copyBca()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
+          </svg>
+          <span id="bca-copy-label">Copy Account Number</span>
+        </button>
+        <div class="divider my-0 text-base-content/30 text-xs">or scan QRIS below</div>
+        <div class="bg-base-300 rounded-xl w-40 h-40 flex items-center justify-center text-base-content/30 text-xs text-center p-2">
+          <!-- Placeholder: place your QRIS image here -->
+          <span>QRIS code<br/>coming soon</span>
+        </div>
+        <p class="text-base-content/40 text-xs italic">Every donation keeps the research going. Thank you!
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 inline-block align-text-bottom text-error" fill="currentColor" viewBox="0 0 24 24"><path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" /></svg>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<footer class="footer footer-center bg-base-200 border-t border-base-300 p-8 text-base-content/50">
+  <div>
+    <div class="flex items-center gap-2 mb-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      </svg>
+      <span class="font-bold text-base-content">PrimeHash</span>
+    </div>
+    <p class="text-sm">
+      Original password hashing scheme by <strong class="text-base-content">Alvin Sudarta</strong> (NIM: 32220028)
+    </p>
+    <p class="text-sm">Universitas Bunda Mulia · Informatics Study Program · Jakarta, 2026</p>
+    <p class="text-xs mt-2 italic">"Implementasi Sponge Structure dan Salting dalam Peningkatan Hashing Password"</p>
+  </div>
+</footer>
+
+<!-- ══════════════════════════ PLAYGROUND LOGIC ══════════════════════════ -->
+<script>
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function updateHashCode() {
+    var pw  = document.getElementById('h-password').value || '';
+    var r   = document.getElementById('h-round').value;
+    var len = document.getElementById('h-length').value;
+    document.getElementById('hash-code-preview').textContent =
+      'PrimeHash.hash("' + pw + '", ' + r + ', ' + len + ')';
+  }
+
+  function updateVerifyCode() {
+    var pw   = document.getElementById('v-password').value || '';
+    var r    = document.getElementById('v-round').value;
+    var hash = document.getElementById('v-hash').value;
+    var sh   = hash.length > 20 ? hash.slice(0,10) + '…' + hash.slice(-6) : (hash || '…');
+    document.getElementById('verify-code-preview').textContent =
+      'PrimeHash.verify(\n    "' + pw + '",\n    ' + r + ',\n    "' + sh + '"\n  )';
+  }
+
+  function setHashLoading(on) {
+    var btn = document.getElementById('hash-btn');
+    btn.disabled = on;
+    document.getElementById('hash-btn-label').textContent = on ? 'Hashing…' : 'Hash Password';
+    btn.classList.toggle('loading', on);
+  }
+
+  function setVerifyLoading(on) {
+    var btn = document.getElementById('verify-btn');
+    btn.disabled = on;
+    document.getElementById('verify-btn-label').textContent = on ? 'Verifying…' : 'Verify Password';
+    btn.classList.toggle('loading', on);
+  }
+
+  function showHashResult(html, visible) {
+    var box = document.getElementById('hash-result');
+    document.getElementById('hash-result-inner').innerHTML = html;
+    box.classList.toggle('hidden', visible === false);
+  }
+
+  function showVerifyResult(html, visible) {
+    var box = document.getElementById('verify-result');
+    document.getElementById('verify-result-inner').innerHTML = html;
+    box.classList.toggle('hidden', visible === false);
+  }
+
+  async function doHash() {
+    var pw  = document.getElementById('h-password').value;
+    var r   = parseInt(document.getElementById('h-round').value, 10);
+    var len = parseInt(document.getElementById('h-length').value, 10);
+
+    if (!pw) {
+      showHashResult('<span class="text-error">Please enter a password.</span>');
+      return;
+    }
+
+    setHashLoading(true);
+    showHashResult('', false);
+    await new Promise(function(res) { setTimeout(res, 20); });
+
+    try {
+      var result = PrimeHash.hash(pw, r, len);
+
+      // Auto-fill verify
+      document.getElementById('v-password').value = pw;
+      document.getElementById('v-round').value = r;
+      document.getElementById('v-round-val').textContent = r;
+      document.getElementById('v-hash').value = result;
+      document.getElementById('autofill-note').style.display = 'inline';
+      updateVerifyCode();
+
+      showHashResult(
+        '<p class="text-base-content/50 text-xs uppercase tracking-widest font-semibold mb-1">Hash</p>' +
+        '<p class="text-info break-all">' + esc(result) + '</p>' +
+        '<p class="text-base-content/30 text-xs mt-2">' + len + ' bytes · ' + result.length + ' hex chars · round=' + r + '</p>'
+      );
+    } catch(e) {
+      showHashResult('<span class="text-error">Error: ' + esc(e.message) + '</span>');
+    }
+    setHashLoading(false);
+  }
+
+  async function doVerify() {
+    var pw   = document.getElementById('v-password').value;
+    var r    = parseInt(document.getElementById('v-round').value, 10);
+    var hash = document.getElementById('v-hash').value.trim();
+
+    if (!pw || !hash) {
+      showVerifyResult('<span class="text-error">Please fill in all fields.</span>');
+      return;
+    }
+
+    setVerifyLoading(true);
+    showVerifyResult('', false);
+    await new Promise(function(res) { setTimeout(res, 20); });
+
+    try {
+      var result = PrimeHash.verify(pw, r, hash);
+      if (result.valid) {
+        showVerifyResult(
+          '<p class="text-success font-bold text-sm mb-2 flex items-center gap-1"><svg xmlns=\'http://www.w3.org/2000/svg\' class=\'h-4 w-4 shrink-0\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'currentColor\' stroke-width=\'2.5\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' d=\'M4.5 12.75l6 6 9-13.5\'/></svg>Valid — Password matches</p>' +
+          '<p class="text-base-content/50 text-xs uppercase tracking-widest font-semibold mb-1">Update Hash (rotation)</p>' +
+          '<p class="text-info break-all">' + esc(result.updateHash) + '</p>'
+        );
+      } else {
+        showVerifyResult('<p class="text-error font-bold text-sm flex items-center gap-1"><svg xmlns=\'http://www.w3.org/2000/svg\' class=\'h-4 w-4 shrink-0\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'currentColor\' stroke-width=\'2.5\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' d=\'M6 18L18 6M6 6l12 12\'/></svg>Invalid — Password does not match</p>');
+      }
+    } catch(e) {
+      showVerifyResult('<span class="text-error">Error: ' + esc(e.message) + '</span>');
+    }
+    setVerifyLoading(false);
+  }
+
+  function copyBca() {
+    navigator.clipboard.writeText('4770234293').then(function() {
+      document.getElementById('bca-copy-label').textContent = 'Copied!';
+      setTimeout(function() { document.getElementById('bca-copy-label').textContent = 'Copy Account Number'; }, 2000);
+    });
+  }
+
+  updateHashCode();
+  updateVerifyCode();
+</script>
+
+</body>
+</html>
